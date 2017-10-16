@@ -1,0 +1,213 @@
+Content-Type: application/json; charset=utf-8
+
+【登录】
+http://10.0.19.4:8000/login
+{
+  "username":"admin",
+  "password":"YourPassword"
+}
+
+
+sessionid=7u1pd9w2dw3s2nm46ovxfx554ob7wwk4; expires=Wed, 27-Sep-2017 01:22:39 GMT; httponly; Max-Age=1209600; Path=/
+http://10.0.19.4:8000/dnscmd
+
+【同步】
+{
+  "action":"sync"
+}
+
+【获取所有 zone】
+{
+  "action":"all"
+}
+
+【获取指定 zone 所有 record】
+{
+  "action":"query",
+  "object":"zone",
+  "datas":
+  [
+    {
+       "zone_name":"95039.com",
+       "zone_type":"Forward"
+    },
+    {
+       "zone_name":"cmbchinaucs.com",
+       "zone_type":"Forward"
+     },
+    {
+        "zone_name":"47.5.10.in-addr.arpa",
+        "zone_type":"Reverse"
+     }
+   ]
+}
+
+【获取指定 record】
+{
+  "action":"query",
+  "object":"record",
+  "datas":
+  [
+    {
+       "zone_name":"db.cc",
+       "record_name":"MAPDAA203197"
+    },
+    {
+       "zone_name":"ucsmy.com",
+       "record_name":"belink"
+     },
+    {
+        "zone_name":"47.5.10.in-addr.arpa",
+        "record_name":"10.5.47.3"
+     },
+	 {
+        "zone_name":"20.1.10.in-addr.arpa",
+        "record_name":"10.1.20.17"
+     }
+   ]
+}
+
+
+【新增 zone】
+{
+  "action":"add",
+  "object":"zone",
+  "datas":
+  [
+    {
+       "zone_name":"mytest0.com",
+       "zone_type":"Forward"
+    },
+    {
+        "zone_name":"123.168.192.in-addr.arpa",
+        "zone_type":"Reverse"
+    }
+   ]
+}
+
+
+【新增 record】
+{
+  "action":"add",
+  "object":"record",
+  "datas":
+  [
+    {
+       "zone_name":"mytest0.com",
+       "record_name":"myhost01",
+	   "record_type":"A",
+	   "record_value":"192.168.123.1"
+    },
+	{
+       "zone_name":"mytest0.com",
+       "record_name":"myhost02",
+	   "record_type":"A",
+	   "record_value":"192.168.123.2"
+    },
+	{
+       "zone_name":"mytest0.com",
+       "record_name":"myhost03",
+	   "record_type":"CNAME",
+	   "record_value":"myhost02.mytest0.com"
+    },
+    {
+        "zone_name":"123.168.192.in-addr.arpa",
+        "record_name":"192.168.123.1",
+		"record_type":"PTR",
+	    "record_value":"myhost01.mytest0.com"
+    }
+   ]
+}
+
+
+{
+  "action":"query",
+  "object":"record",
+  "datas":
+  [
+    {
+       "record_name":"myhost01"
+    },
+    {
+       "record_name":"myhost02"
+     },
+    {
+       "record_name":"myhost03"
+     },
+    {
+        "record_name":"192.168.123.1"
+     }
+   ]
+}
+
+
+【删除 record】
+{
+  "action":"del",
+  "object":"record",
+  "datas":
+  [
+    {
+       "zone_name":"mytest0.com",
+       "record_name":"myhost01",
+	   "record_type":"A",
+	   "record_value":"192.168.123.1"
+    },
+	{
+       "zone_name":"mytest0.com",
+       "record_name":"myhost02",
+	   "record_type":"A",
+	   "record_value":"192.168.123.2"
+    },
+	{
+       "zone_name":"mytest0.com",
+       "record_name":"myhost03",
+	   "record_type":"CNAME",
+	   "record_value":"myhost02.mytest0.com"
+    },
+    {
+        "zone_name":"123.168.192.in-addr.arpa",
+        "record_name":"192.168.123.1",
+		"record_type":"PTR",
+	    "record_value":"myhost01.mytest0.com"
+    }
+   ]
+}
+
+
+{
+  "action":"query",
+  "object":"record",
+  "datas":
+  [
+    {
+       "record_name":"myhost01"
+    },
+    {
+       "record_name":"myhost02"
+     },
+    {
+       "record_name":"myhost03"
+     },
+    {
+        "record_name":"192.168.123.1"
+     }
+   ]
+}
+
+【删除 zone】
+{
+  "action":"del",
+  "object":"zone",
+  "datas":
+  [
+    {
+       "zone_name":"mytest0.com",
+       "zone_type":"Forward"
+    },
+    {
+        "zone_name":"123.168.192.in-addr.arpa",
+        "zone_type":"Reverse"
+    }
+   ]
+}
